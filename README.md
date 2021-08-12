@@ -23,3 +23,14 @@ d5f9411f5108260320064349b757f55c09bc4b80 command: Fix bug when using terraform l
 4b6d06cc5dcb78af637bbb19c198faff37a066ed Update CHANGELOG.md
 dd01a35078f040ca984cdd349f18d0b67e486c35 Update CHANGELOG.md
 225466bc3e5f35baa5d07197bbc079345b77525e Cleanup after v0.12.23 release
+
+5. git log --reverse -S "func providerSource" --oneline
+8c928e835 main: Consult local directories as potential mirrors of providers
+
+6. git log -S globalPluginDirs
+35a058fb3 main: configure credentials from the CLI config file
+c0b176109 prevent log output during init
+8364383c3 Push plugin discovery down into command package
+
+7. git log --reverse -S synchronizedWriters
+Author: Martin Atkins <mart@degeneration.co.uk>

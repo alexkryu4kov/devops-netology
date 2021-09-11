@@ -1,36 +1,31 @@
-# devops-netology
+**Какие ресурсы выделены по-умолчанию?**  
+2 CPU и 1024 мб памяти
 
-ДЗ 2.4
+**Как добавить оперативной памяти или ресурсов процессора виртуальной машине?**  
+Отредактировать vagrantfile
+config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 4
 
-1. git show aefea
-commit aefead2207ef7e2aa5dc81a34aedf0cad4c32545
-Update CHANGELOG.md
+**Какой переменной можно задать длину журнала history, и на какой строчке manual это описывается?**  
+HISTFILESIZE (строка 627) или HISTSIZE (строка 637)
 
-2. git describe --exact-match 85024d3
-v0.12.23
+**Что делает директива ignoreboth в bash?**  
+Игнорирует строки, начинающиеся с пробела в истории и дубликаты относительно последней введенной команды.
 
-3. git log --pretty=%P -n 1 b8d720
-56cd7859e05c36c06b56d013b55a252d0bb7e158 9ea88f22fc6269854151c571162c5bcf958bee2b
+**В каких сценариях использования применимы скобки {} и на какой строчке man bash это описано?**  
+Перечисление параметров, которые подставляются в команду bash.
+Описывается на 863 строке.
 
-4. git log --pretty=oneline v0.12.23...v0.12.24
-33ff1c03bb960b332be3af2e333462dde88b279e (tag: v0.12.24) v0.12.24
-b14b74c4939dcab573326f4e3ee2a62e23e12f89 [Website] vmc provider links
-3f235065b9347a758efadc92295b540ee0a5e26e Update CHANGELOG.md
-6ae64e247b332925b872447e9ce869657281c2bf registry: Fix panic when server is unreachable
-5c619ca1baf2e21a155fcdb4c264cc9e24a2a353 website: Remove links to the getting started guide's old location
-06275647e2b53d97d4f0a19a0fec11f6d69820b5 Update CHANGELOG.md
-d5f9411f5108260320064349b757f55c09bc4b80 command: Fix bug when using terraform login on Windows
-4b6d06cc5dcb78af637bbb19c198faff37a066ed Update CHANGELOG.md
-dd01a35078f040ca984cdd349f18d0b67e486c35 Update CHANGELOG.md
-225466bc3e5f35baa5d07197bbc079345b77525e Cleanup after v0.12.23 release
+**Как создать однократным вызовом touch 100000 файлов?**  
+touch test/file_{1...100000}
 
-5. git log --reverse -S "func providerSource" --oneline
-8c928e835 main: Consult local directories as potential mirrors of providers
+**Получится ли аналогичным образом создать 300000?**   
+Аналогичная команда (touch test/file_{1...300000}) приведет к ошибке Argument list too long
 
-6. git log -S globalPluginDirs
-35a058fb3 main: configure credentials from the CLI config file
-c0b176109 prevent log output during init
-8364383c3 Push plugin discovery down into command package
+**Что делает конструкция [[ -d /tmp ]]**  
+Проверяет наличие директории /tmp. В [[]] указывается выражение, которое возвращает 0 и 1 (boolean) 
 
-7. git log --reverse -S synchronizedWriters
-Author: Martin Atkins <mart@degeneration.co.uk>
+**Чем отличается планирование команд с помощью batch и at?**  
+at запустит команду только один раз, batch - не один раз. Команды в batch выполняются последовательно,
+а с помощью at можно запускать их параллельно
